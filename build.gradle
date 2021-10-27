@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.testng:testng:7.4.0'
+    testCompile 'org.seleniumhq.selenium:selenium-java:4.0.0'
+    testCompile 'io.qameta.allure:allure-testng:2.14.0'
+}
+
+test {
+    useTestNG() {
+        suites "parametersXml/login.xml"
+        suites "parametersXml/email.xml"
+        suites "parametersXml/password.xml"
+        suites "parametersXml/termsCheckbox.xml"
+        suites "parametersXml/subscribeCheckbox.xml"
+    }
+}
+

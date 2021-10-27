@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Login field validation">
+    <test name="Empty login">
+        <parameter name="login" value=""/>
+        <parameter name="expectedMessage" value="Please enter your name."/>
+        <classes>
+            <class name="tests.LoginValidationTest">
+                <methods>
+                    <include name="EmptyLoginTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Max characters (55) in login">
+        <parameter name="login" value="1234567890123456789012345678901234567890123456789012345"/>
+        <classes>
+            <class name="tests.LoginValidationTest">
+                <methods>
+                    <include name="MaxCharactersLoginTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="More than max characters (56) in login">
+        <parameter name="login" value="12345678901234567890123456789012345678901234567890123456"/>
+        <classes>
+            <class name="tests.LoginValidationTest">
+                <methods>
+                    <include name="MoreThanMaxCharactersLoginTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="One character allowed in login">
+        <parameter name="login" value="1"/>
+        <classes>
+            <class name="tests.LoginValidationTest">
+                <methods>
+                    <include name="AllowedCharactersLoginTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Allowed characters in login">
+        <parameter name="login" value="123 QWE-_`qwe ЫФЙ"/>
+        <classes>
+            <class name="tests.LoginValidationTest">
+                <methods>
+                    <include name="AllowedCharactersLoginTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

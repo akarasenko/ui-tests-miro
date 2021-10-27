@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Terms should be checked test">
+    <test name="Terms not checked test">
+        <parameter name="expectedMessage" value="Please agree with the Terms to sign up."/>
+        <classes>
+            <class name="tests.TermsCheckboxTest"/>
+        </classes>
+    </test>
+</suite>

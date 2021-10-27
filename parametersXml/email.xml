@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Email field validation">
+    <test name="Empty email test">
+        <parameter name="email" value=""/>
+        <parameter name="expectedMessage" value="Please enter your email address."/>
+        <classes>
+            <class name="tests.EmailValidationTest">
+                <methods>
+                    <include name="ErrorInEmailTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Invalid email without domain test">
+        <parameter name="email" value="email@"/>
+        <parameter name="expectedMessage" value="The email you entered is incorrect."/>
+        <classes>
+            <class name="tests.EmailValidationTest">
+                <methods>
+                    <include name="ErrorInEmailTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Invalid email without name test">
+        <parameter name="email" value="@qwe.com"/>
+        <parameter name="expectedMessage" value="The email you entered is incorrect."/>
+        <classes>
+            <class name="tests.EmailValidationTest">
+                <methods>
+                    <include name="ErrorInEmailTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Invalid email without . test">
+        <parameter name="email" value="email@qwe"/>
+        <parameter name="expectedMessage" value="This doesn’t look like an email address. Please check it for typos and try again."/>
+        <classes>
+            <class name="tests.EmailValidationTest">
+                <methods>
+                    <include name="ErrorInEmailTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Invalid email without @ test">
+        <parameter name="email" value="email.qwe"/>
+        <parameter name="expectedMessage" value="The email you entered is incorrect."/>
+        <classes>
+            <class name="tests.EmailValidationTest">
+                <methods>
+                    <include name="ErrorInEmailTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Invalid email with @ twice test">
+        <parameter name="email" value="email@qwe@qwe.com"/>
+        <parameter name="expectedMessage" value="The email you entered is incorrect."/>
+        <classes>
+            <class name="tests.EmailValidationTest">
+                <methods>
+                    <include name="ErrorInEmailTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Invalid email without space in name test">
+        <parameter name="email" value="email qwe@qwe.com"/>
+        <parameter name="expectedMessage" value="The email you entered is incorrect."/>
+        <classes>
+            <class name="tests.EmailValidationTest">
+                <methods>
+                    <include name="ErrorInEmailTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Invalid email without space in domain test">
+        <parameter name="email" value="email@qwe qwe.com"/>
+        <parameter name="expectedMessage" value="The email you entered is incorrect."/>
+        <classes>
+            <class name="tests.EmailValidationTest">
+                <methods>
+                    <include name="ErrorInEmailTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Invalid email with numbers in top level domain test">
+        <parameter name="email" value="email@qwe.123"/>
+        <parameter name="expectedMessage" value="This doesn’t look like an email address. Please check it for typos and try again."/>
+        <classes>
+            <class name="tests.EmailValidationTest">
+                <methods>
+                    <include name="ErrorInEmailTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Email already taken test">
+        <parameter name="email" value="qwe@qwe.com"/>
+        <parameter name="expectedMessage" value="Sorry, this email is already registered"/>
+        <classes>
+            <class name="tests.EmailValidationTest">
+                <methods>
+                    <include name="ErrorInEmailTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Valid email test">
+        <parameter name="email" value="email-QWE_123.qwe.qwe@email-QWE.123.com"/>
+        <classes>
+            <class name="tests.EmailValidationTest">
+                <methods>
+                    <include name="SuccessfulRegistrationEmailTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
